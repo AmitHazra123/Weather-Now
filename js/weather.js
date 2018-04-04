@@ -41,7 +41,7 @@ function getWeather(lat, lng)
              <div class="day">${getDay(singleDay.date)}</div>
            </div>
            <div class="forecast-content">
-             <img src="https:${singleDay.day.condition.icon}" class="img-fluid">
+
              <div class="fontSet" id="dayHigh">${singleDay.day.avgtemp_c}<sup>o</sup></div>
              <small id="fontSet">${singleDay.day.mintemp_c}<sup>o</small><br>
              Sunrise: <small id="fontSet">${singleDay.astro.sunrise}</small>
@@ -56,52 +56,52 @@ function getWeather(lat, lng)
 
 
 
-   axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true`)
-   .then((response) => {
-     let locationArray = response.data.results[0];
-     let full_Address = locationArray.formatted_address;
-     console.log(full_Address);
-     document.getElementById("locationAddress").innerHTML=full_Address;
-     let addressStrArray = full_Address.toString().split(',');
-     let country = addressStrArray[addressStrArray.length-1];
-     let city = addressStrArray[addressStrArray.length-3];
-     axios.get(`https://api.wunderground.com/api/b8e7e676776e32f0/hourly/q/${country}/${city}.json`)
-     .then((response)=> {
-       // console.log(response);
-       let weatherDataHourly = response.data.hourly_forecast;
-       // console.log(weatherDataHourly);
-       let outputHour = '';
-       if(weatherDataHourly.length>0){
-        $.each(weatherDataHourly, (index, singleHour) => {
-          outputHour += `
-          <div id="col-hour">
-            <div class="row">
-                <div class="col-md-12">
-              ${singleHour.FCTTIME.civil} <br>${singleHour.FCTTIME.weekday_name_abbrev}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                 <br>
-                ${singleHour.condition}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                <small id="fontSet">${singleHour.temp.metric}<sup>o</small>
-                </div>
-            </div>
-          </div>
-          `;
-        });
-        $('#hourForecast').html(outputHour);
-       } else{
-        $('#hourForecast').html('<h3>No Data Found at This moment !! Please Try After Sometimes</h3>');
-       }
-
-     });
-
-   })
+   // axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}`)
+   // .then((response) => {
+   //   let locationArray = response.data.results[0];
+   //   let full_Address = locationArray.formatted_address;
+   //   console.log(full_Address);
+   //   document.getElementById("locationAddress").innerHTML=full_Address;
+   //   let addressStrArray = full_Address.toString().split(',');
+   //   let country = addressStrArray[addressStrArray.length-1];
+   //   let city = addressStrArray[addressStrArray.length-3];
+   //   axios.get(`https://api.wunderground.com/api/b8e7e676776e32f0/hourly/q/${country}/${city}.json`)
+   //   .then((response)=> {
+   //     // console.log(response);
+   //     let weatherDataHourly = response.data.hourly_forecast;
+   //     // console.log(weatherDataHourly);
+   //     let outputHour = '';
+   //     if(weatherDataHourly.length>0){
+   //      $.each(weatherDataHourly, (index, singleHour) => {
+   //        outputHour += `
+   //        <div id="col-hour">
+   //          <div class="row">
+   //              <div class="col-md-12">
+   //            ${singleHour.FCTTIME.civil} <br>${singleHour.FCTTIME.weekday_name_abbrev}
+   //              </div>
+   //          </div>
+   //          <div class="row">
+   //              <div class="col-md-12">
+   //               <br>
+   //              ${singleHour.condition}
+   //              </div>
+   //          </div>
+   //          <div class="row">
+   //              <div class="col-md-12">
+   //              <small id="fontSet">${singleHour.temp.metric}<sup>o</small>
+   //              </div>
+   //          </div>
+   //        </div>
+   //        `;
+   //      });
+   //      $('#hourForecast').html(outputHour);
+   //     } else{
+   //      $('#hourForecast').html('<h3>No Data Found at This moment !! Please Try After Sometimes</h3>');
+   //     }
+   //
+   //   });
+   //
+   // })
 
 
 
@@ -122,3 +122,4 @@ function getDay(date){
 
 
 //<img src ="${singleHour.icon_url}" class="img-fluid">
+/* <img src="https:${singleDay.day.condition.icon}" class="img-fluid">*/
