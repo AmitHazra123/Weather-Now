@@ -23,7 +23,7 @@ function getWeather(lat, lng)
 
 
 
-   axios.get(`http://api.apixu.com/v1/forecast.json?key=b5c387b0076a461eb9e40808180404&q=${lat},${lng}&days=7`)
+   axios.get(`https://api.apixu.com/v1/forecast.json?key=b5c387b0076a461eb9e40808180404&q=${lat},${lng}&days=7`)
    .then((response) => {
      let weather7Days = response.data;
      $('#todaydate').html(weather7Days.location.localtime);
@@ -56,7 +56,7 @@ function getWeather(lat, lng)
 
 
 
-   axios.get(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true`)
+   axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&sensor=true`)
    .then((response) => {
      let locationArray = response.data.results[0];
      let full_Address = locationArray.formatted_address;
