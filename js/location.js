@@ -28,7 +28,7 @@ function getLocation(searchLocation){
     let full_Address = resultsArray[0].formatted_address;
     let latitude = resultsArray[0].geometry.location.lat;
     let longitude = resultsArray[0].geometry.location.lng;
-    
+    $('#locationAddress').html(full_Address);
     getWeather(latitude, longitude);
 
 
