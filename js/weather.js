@@ -60,7 +60,8 @@ function getWeather(lat, lng)
    .then((response) => {
      let locationArray = response.data.results[0];
      let full_Address = locationArray.formatted_address;
-     $('#locationAddress').html(full_Address);
+     console.log(full_Address);
+     document.getElementById("locationAddress").innerHTML=full_Address;
      let addressStrArray = full_Address.toString().split(',');
      let country = addressStrArray[addressStrArray.length-1];
      let city = addressStrArray[addressStrArray.length-3];
@@ -81,7 +82,7 @@ function getWeather(lat, lng)
             </div>
             <div class="row">
                 <div class="col-md-12">
-                <img src ="${singleHour.icon_url}" class="img-fluid"><br>
+                 <br>
                 ${singleHour.condition}
                 </div>
             </div>
@@ -118,3 +119,6 @@ function getDay(date){
    var dayName = d.toString().split(' ')[0];
   return(dayName);
 }
+
+
+//<img src ="${singleHour.icon_url}" class="img-fluid">
